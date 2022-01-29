@@ -1,6 +1,8 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class CSVReader {
 
@@ -24,14 +26,16 @@ public class CSVReader {
         return eachLineAirportsData;
     }
 
-    public static String[] readCountryFile() throws IOException {
+    public static ArrayList<String> readCountryFile() throws IOException {
         BufferedReader countriesData = new BufferedReader(new FileReader("resources/countries.csv"));
         String currentLineCountriesData;
-        String[] eachLineCountriesData = new String[]{};
+        ArrayList<String> eachLineCountriesData = new ArrayList<String>();
         while ((currentLineCountriesData = countriesData.readLine()) != null) {
-            eachLineCountriesData = currentLineCountriesData.split(",");
+            eachLineCountriesData.add(currentLineCountriesData);
         }
         return eachLineCountriesData;
     }
+
+
 
 }
