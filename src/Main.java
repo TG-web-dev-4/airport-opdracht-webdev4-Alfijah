@@ -26,7 +26,7 @@ public class Main {
 //        country.name = countriesData.get(2);
 //        country.continent = countriesData.get(3);
 //        System.out.println(country.name + country.continent);
-        System.out.println(countriesData.get(1l));
+//        System.out.println(countriesData.get(1l));
 //        for (String element : countriesData) {
 //        System.out.println(element);
 //
