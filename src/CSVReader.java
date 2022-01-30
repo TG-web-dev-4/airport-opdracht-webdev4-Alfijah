@@ -1,27 +1,26 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class CSVReader {
 
-    public static String[] readRunwayFile() throws IOException {
+    public static ArrayList<String> readRunwayFile() throws IOException {
         BufferedReader runwaysData = new BufferedReader(new FileReader("resources/runways.csv"));
         String currentLineRunwaysData;
-        String[] eachLineRunwaysData = new String[]{};
+        ArrayList<String> eachLineRunwaysData = new ArrayList<>();
         while ((currentLineRunwaysData = runwaysData.readLine()) != null) {
-            eachLineRunwaysData = currentLineRunwaysData.split(",");
+            eachLineRunwaysData.add(currentLineRunwaysData);
         }
         return eachLineRunwaysData;
     }
 
-    public static String[] readAirportFIle() throws IOException {
+    public static ArrayList<String> readAirportFIle() throws IOException {
         BufferedReader airportsData = new BufferedReader(new FileReader("resources/airports.csv"));
         String currentLineAirportsData;
-        String[] eachLineAirportsData = new String[]{};
+        ArrayList<String> eachLineAirportsData = new ArrayList<>();
         while ((currentLineAirportsData = airportsData.readLine()) != null) {
-            eachLineAirportsData = currentLineAirportsData.split(",");
+            eachLineAirportsData.add(currentLineAirportsData);
         }
         return eachLineAirportsData;
     }
@@ -35,7 +34,4 @@ public class CSVReader {
         }
         return eachLineCountriesData;
     }
-
-
-
 }

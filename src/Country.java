@@ -1,11 +1,11 @@
 import java.util.ArrayList;
 
 public class Country {
-    public int id;
+    public String id;
     public String code;
     public String name;
     public String continent;
-    public ArrayList<Airport> airports;
+    public ArrayList<Airport> nationalAirports;
 }
 
 
