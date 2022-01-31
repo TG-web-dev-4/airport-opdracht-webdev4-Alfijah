@@ -6,6 +6,7 @@ public class Main {
         ArrayList<Runway> runways = new ArrayList<>();
         ArrayList<String> runwaysData = CSVReader.readRunwayFile();
         for (String line : runwaysData) {
+            System.out.println("test");
             String[] splitEachRunwayLine = line.split(",");
             Runway runway = new Runway();
             runway.id = splitEachRunwayLine[0];
