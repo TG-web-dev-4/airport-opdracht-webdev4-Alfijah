@@ -91,57 +91,5 @@ public class Main {
         ArrayList<Country> countries = getCountryData();
 //        getMatchingRunways(airports, runways);
         getMatchingAirports(countries, airports);
-
-
-
-//        System.out.println("numbersMap size: "+ numbersMap.size());
-//        System.out.println("Airport size: "+ airports.size());
-//        System.out.println("Runway size: " + runways.size());
-
-//        System.out.println(getRunwayMap(runways, airports));
-
-//        ArrayList<Integer> A = new ArrayList<Integer>();
-//        ArrayList<Integer> B = new ArrayList<Integer>();
-//        A.add(10);
-//        A.add(20);
-//        B.add(10);
-//        B.add(30);
-//        B.add(20);
-//        B.add(40);
-//        B.add(20);
-//        B.add(20);
-//        HashMap<Integer, ArrayList> numbersMap = new HashMap<>();
-//        System.out.println(A);
-//        System.out.println(B);
-
-//        for(int i = 0; i < B.size(); i++) {
-//            int key = B.get(i);
-//            int subValue = B.get(i);
-//            if (numbersMap.containsKey(key)) {
-//                ArrayList<Integer> value = numbersMap.get(key);
-//                value.add(subValue);
-//                numbersMap.put(key, value);
-//            } else {
-//                ArrayList<Integer> value = new ArrayList<>();
-//                value.add(subValue);
-//                numbersMap.put(key, value);
-//            }
-//        }
-
-//        for(int i = 0; i < A.size(); i++) {
-//            int key = A.get(i);
-//            ArrayList<Integer> value = new ArrayList<>();
-//            for(int j = 0; j < B.size(); j++)
-//            {
-//                int valueB = B.get(j);
-//                if(key == valueB)
-//                {
-//                    value.add(valueB);
-//                }
-//            }
-//            numbersMap.put(key, value);
-//        }
-//        System.out.println(numbersMap);
-
     }
 }
