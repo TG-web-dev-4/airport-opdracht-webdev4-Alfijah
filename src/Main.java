@@ -1,5 +1,4 @@
 import java.io.*;
-import java.lang.reflect.Array;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -45,14 +44,13 @@ public class Main {
             country.code = splitEachCountryLine[1];
             country.name = splitEachCountryLine[2];
             country.continent = splitEachCountryLine[3];
-//            country.nationalAirports.addAll(airports); //nog filteren en koppelen
             countries.add(country);
         }
         return countries;
     }
 
     public static ArrayList<Airport> getMatchingRunways(ArrayList<Airport> airports, ArrayList<Runway> runways) {
-        List<Runway> filteredRunways = new ArrayList<>();
+        List<Runway> filteredRunways;
 
         for (Airport a : airports) {
             String airportID = a.id;
@@ -63,13 +61,13 @@ public class Main {
         ListIterator<Airport> iteratedAirports = airports.listIterator();
         while (iteratedAirports.hasNext()){
             Airport a = iteratedAirports.next();
-            System.out.println(a.name + " has: " + a.containingRunways.size() + " runway(s).");
+//            System.out.println(a.name + " has: " + a.containingRunways.size() + " runway(s).");
         }
         return airports;
     }
 
     public static ArrayList<Country> getMatchingAirports(ArrayList<Country> countries, ArrayList<Airport> airports) {
-        List<Airport> filteredAirports = new ArrayList<>();
+        List<Airport> filteredAirports;
 
         for (Country c : countries) {
             String countryCode = c.code;
@@ -80,16 +78,33 @@ public class Main {
         ListIterator<Country> iteratedCountries = countries.listIterator();
         while (iteratedCountries.hasNext()) {
             Country c = iteratedCountries.next();
-            System.out.println(c.name + " has: " + c.nationalAirports.size() + " airports.");
+//            System.out.println(c.name + " has: " + c.nationalAirports.size() + " airports.");
         }
         return countries;
+    }
+
+    public static ArrayList<Country> sortAirportsListByLength(ArrayList<Country> matchedAirports, ArrayList<Country> countries) {
+        ArrayList<Country> countriesWithLargestAirports = new ArrayList<>();
+
+        Collections.sort(matchedAirports, (o1, o2) -> Integer.compare(o2.nationalAirports.size(), o1.nationalAirports.size()));
+
+
+        for (Country c : countriesWithLargestAirports) {
+            System.out.println(c.name + " has " + c.nationalAirports);
+        }
+        for ( int i = 0; i < 10; i++ ) {
+            System.out.println(i + 1 + countries.get(i).name + " has: " + countries.get(i).nationalAirports.size() +
+                    " airports.");
+        }
+        return countriesWithLargestAirports;
     }
 
     public static void main(String[] args) throws IOException {
         ArrayList<Runway> runways = getRunwayData();
         ArrayList<Airport> airports = getAirportData();
         ArrayList<Country> countries = getCountryData();
-//        getMatchingRunways(airports, runways);
-        getMatchingAirports(countries, airports);
+        ArrayList<Airport> matchedRunways = getMatchingRunways(airports, runways);
+        ArrayList<Country> matchedAirports = getMatchingAirports(countries, airports);
+        sortAirportsListByLength(matchedAirports, countries);
     }
 }
