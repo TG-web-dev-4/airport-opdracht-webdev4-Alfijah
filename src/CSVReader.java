@@ -16,7 +16,7 @@ public class CSVReader {
     }
 
     public static ArrayList<String> readAirportFile() throws IOException {
-        BufferedReader airportsData = new BufferedReader(new FileReader("resources/airports.csv"));
+            BufferedReader airportsData = new BufferedReader(new FileReader("resources/airports.csv"));
         String currentLineAirportsData;
         ArrayList<String> eachLineAirportsData = new ArrayList<>();
         while ((currentLineAirportsData = airportsData.readLine()) != null) {

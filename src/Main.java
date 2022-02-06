@@ -85,18 +85,24 @@ public class Main {
 
     public static ArrayList<Country> sortAirportsListByLength(ArrayList<Country> matchedAirports, ArrayList<Country> countries) {
         ArrayList<Country> countriesWithLargestAirports = new ArrayList<>();
-
         Collections.sort(matchedAirports, (o1, o2) -> Integer.compare(o2.nationalAirports.size(), o1.nationalAirports.size()));
-
 
         for (Country c : countriesWithLargestAirports) {
             System.out.println(c.name + " has " + c.nationalAirports);
         }
         for ( int i = 0; i < 10; i++ ) {
-            System.out.println(i + 1 + countries.get(i).name + " has: " + countries.get(i).nationalAirports.size() +
+            System.out.println(i + 1 + ": " + countries.get(i).name + " has: " + countries.get(i).nationalAirports.size() +
                     " airports.");
         }
         return countriesWithLargestAirports;
+    }
+
+    public static void userCountryRequest(String country, ArrayList<Country> countries) {
+        for (Country c : countries) {
+           if (country.equals(c.name.toLowerCase(Locale.ROOT).trim())) {
+                System.out.println(c + "has airports " + c.nationalAirports);
+            }
+        }
     }
 
     public static void main(String[] args) throws IOException {
@@ -106,5 +112,28 @@ public class Main {
         ArrayList<Airport> matchedRunways = getMatchingRunways(airports, runways);
         ArrayList<Country> matchedAirports = getMatchingAirports(countries, airports);
         sortAirportsListByLength(matchedAirports, countries);
+
+        Scanner scan = new Scanner(System.in);
+        String userName = "";
+        String userInput = "";
+        String userChoice = "";
+
+//        System.out.println("\nWelcome! What is your name?");
+//        userName = scan.nextLine();
+//        System.out.println("Hi " + userName + "! What do you wish to see: " +
+//                "\nA: Airports with their runways." +
+//                "\nB: Top 10 countries with the highest number of airports." +
+//                "\nChoose A or B." );
+//        userChoice = scan.next();
+//        System.out.println("Awesome! You have chosen " + userChoice);
+//
+//        while (!userInput.equals("exit")) {
+//            switch (userChoice) {
+//                case "A":
+//                    System.out.println("Type any country to see airports with their runways: ");
+//                    userInput = scan.next();
+//
+//            }
+//        }
     }
 }
