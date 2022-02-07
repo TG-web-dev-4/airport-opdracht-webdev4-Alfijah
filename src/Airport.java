@@ -5,4 +5,8 @@ public class Airport {
     public String name;
     public String isoCountry;
     public ArrayList<Runway> containingRunways;
+
+    public String toString() {
+        return name;
+    }
 }

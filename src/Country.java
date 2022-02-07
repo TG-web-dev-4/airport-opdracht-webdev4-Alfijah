@@ -6,6 +6,10 @@ public class Country {
     public String name;
     public String continent;
     public ArrayList<Airport> nationalAirports;
+
+    public String toString() {
+        return name;
+    }
 }
 
 

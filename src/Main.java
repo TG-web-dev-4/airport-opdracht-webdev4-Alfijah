@@ -61,7 +61,7 @@ public class Main {
         ListIterator<Airport> iteratedAirports = airports.listIterator();
         while (iteratedAirports.hasNext()){
             Airport a = iteratedAirports.next();
-//            System.out.println(a.name + " has: " + a.containingRunways.size() + " runway(s).");
+//            System.out.println(a.name + " with: " + a.containingRunways.size() + " runway(s).");
         }
         return airports;
     }
@@ -97,10 +97,13 @@ public class Main {
         return countriesWithLargestAirports;
     }
 
-    public static void userCountryRequest(String country, ArrayList<Country> countries) {
+    public static void userCountryRequest(String country, ArrayList<Country> countries, ArrayList<Airport> airports) {
         for (Country c : countries) {
-           if (country.equals(c.name.toLowerCase(Locale.ROOT).trim())) {
-                System.out.println(c + "has airports " + c.nationalAirports);
+           if (country.equals(c.name.replace("\"", "").toLowerCase(Locale.ROOT).trim())) {
+               System.out.println(c.name.replace("\"", "") + " has " + c.nationalAirports.size() + " airport(s):");
+               for (Airport airport: c.nationalAirports) {
+                   System.out.println("- " + airport.name.replace("\"", "") + " with: " + airport.containingRunways.size() + " runway(s).");
+               }
             }
         }
     }
@@ -111,29 +114,41 @@ public class Main {
         ArrayList<Country> countries = getCountryData();
         ArrayList<Airport> matchedRunways = getMatchingRunways(airports, runways);
         ArrayList<Country> matchedAirports = getMatchingAirports(countries, airports);
-        sortAirportsListByLength(matchedAirports, countries);
 
         Scanner scan = new Scanner(System.in);
         String userName = "";
         String userInput = "";
         String userChoice = "";
 
-//        System.out.println("\nWelcome! What is your name?");
-//        userName = scan.nextLine();
-//        System.out.println("Hi " + userName + "! What do you wish to see: " +
-//                "\nA: Airports with their runways." +
-//                "\nB: Top 10 countries with the highest number of airports." +
-//                "\nChoose A or B." );
-//        userChoice = scan.next();
-//        System.out.println("Awesome! You have chosen " + userChoice);
-//
-//        while (!userInput.equals("exit")) {
-//            switch (userChoice) {
-//                case "A":
-//                    System.out.println("Type any country to see airports with their runways: ");
-//                    userInput = scan.next();
-//
-//            }
-//        }
+        System.out.println("\nWelcome! What is your name?");
+        userName = scan.nextLine();
+        System.out.println("\nHi " + userName + "!");
+
+        while (!userInput.equals("exit")) {
+            System.out.println("\nWhat do you wish to see? " +
+                    "\nA: Airports with their runways." +
+                    "\nB: Top 10 countries with the highest number of airports." +
+                    "\nChoose A or B. Type \"exit\" to exit." );
+            userChoice = scan.next();
+            switch (userChoice) {
+                case "A":
+                    System.out.println("\nAwesome! You have chosen " + userChoice + ".");
+                    System.out.println("Type any country to see airports with their runways: ");
+                    userInput = scan.next();
+                    System.out.println("\n");
+                    userCountryRequest(userInput, countries, airports);
+                    break;
+                case "B":
+                    System.out.println("\n");
+                    sortAirportsListByLength(matchedAirports, countries);
+                    break;
+                case "exit":
+                    System.out.println("\nHope you were enjoying this. Goodbye " + userName + " :(");
+                    return;
+                default:
+                    System.out.println("Please choose A or B " + userName + " ;)");
+                    break;
+            }
+        }
     }
 }
