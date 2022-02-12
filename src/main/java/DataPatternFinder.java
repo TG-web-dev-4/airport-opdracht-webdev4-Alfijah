@@ -1,4 +1,5 @@
-public class CountryDataFormatter {
+public class DataPatternFinder {
+
 //            for (String singleLine : countriesData) {
 //            System.out.println(singleLine.replaceAll("[^a-zA-Z0-9]", " "));
 //            Pattern p = Pattern.compile("([0-9]+) ([A-Z][A-Z])");
