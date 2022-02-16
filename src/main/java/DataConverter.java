@@ -48,10 +48,4 @@ public class DataConverter {
         }
         return countries;
     }
-
-//    public DataConverter() throws IOException {
-//        ArrayList<Runway> runways = getRunwayData();
-//        ArrayList<Airport> airports = getAirportData();
-//        ArrayList<Country> countries = getCountryData();
-//    }
 }
